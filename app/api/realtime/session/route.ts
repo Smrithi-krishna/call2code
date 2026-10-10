@@ -7,9 +7,10 @@ export async function POST() {
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({ session: {
-      type: 'realtime', model: process.env.OPENAI_REALTIME_MODEL ?? 'gpt-realtime-mini',
+      type: 'realtime',
+      model: process.env.OPENAI_REALTIME_MODEL ?? 'gpt-realtime-mini',
       instructions: 'You are Call2Code. Ask one short question at a time to learn the business name, offer, audience, style, pages, contact details, and desired call to action. When complete, summarize the website brief clearly.',
-      audio: { output: { voice: 'marin' } }
+      audio: { output: { voice: 'marin' }, input: { turn_detection: { type: 'server_vad' }, transcription: { model: 'gpt-4o-mini-transcribe' } } }
     } })
   });
   const data = await response.json();
