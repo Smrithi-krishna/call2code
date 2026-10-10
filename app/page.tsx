@@ -1,3 +1,5 @@
+import VoiceButton from './VoiceButton';
+
 export default function Home() {
   return (
     <main className="shell">
@@ -6,7 +8,7 @@ export default function Home() {
         <div className="eyebrow">✦ Your next website starts with a call</div>
         <h1>Tell us your idea.<br /><em>We’ll build the site.</em></h1>
         <p className="lede">Call our AI assistant. It asks the right questions about your business, then turns your answers into a polished website ready to launch.</p>
-        <div className="actions"><a className="primary" href="tel:+10000000000">☏ Call the AI assistant</a><a className="secondary" href="#how">See how it works ↓</a></div>
+        <div className="actions"><VoiceButton /><a className="secondary" href="#how">See how it works ↓</a></div>
         <div className="trust"><span>●</span> No design skills needed <span>●</span> Live on Vercel <span>●</span> Built in minutes</div>
       </section>
       <section id="how" className="steps">
