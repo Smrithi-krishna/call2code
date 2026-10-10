@@ -28,7 +28,12 @@ export async function POST(_request: Request, context: { params: Promise<{ id: s
     const deploy = await fetch('https://api.vercel.com/v13/deployments', {
       method: 'POST',
       headers: { Authorization: `Bearer ${vercelToken}`, 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: `call2code-${id.slice(0, 8)}`, files: [{ file: 'index.html', data: html }], projectSettings: { framework: null } })
+      body: JSON.stringify({
+        name: `call2code-${id.slice(0, 8)}`,
+        target: 'production',
+        files: [{ file: 'index.html', data: html, encoding: 'utf-8' }],
+        projectSettings: { framework: null }
+      })
     });
     const deployData = await deploy.json();
     if (!deploy.ok) throw new Error(deployData?.error?.message ?? 'Vercel deployment failed');
