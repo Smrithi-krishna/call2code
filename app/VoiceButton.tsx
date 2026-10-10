@@ -71,7 +71,7 @@ export default function VoiceButton() {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ transcript: transcript.current })
-        }).then(r => r.json());
+        }).then(async r => { const data = await r.json(); if (!r.ok || !data.id) throw new Error(data.error ?? 'Could not save project'); return data; });
 
         const built = await fetch(`/api/projects/${created.id}/generate`, { method: 'POST' }).then(r => r.json());
         if (!built.deploymentUrl) throw new Error(built.error ?? 'Deployment failed');
@@ -96,7 +96,7 @@ export default function VoiceButton() {
         >
           {state === 'live' ? '■ Finish and build website' :
            state === 'connecting' ? 'Connecting to AI…' :
-           state === 'building' ? 'Building with Kimi K3…' :
+           state === 'building' ? 'Building with OpenAI…' :
            state === 'error' ? 'Try again' : '☏ Talk to the AI'}
         </button>
         {result && (
