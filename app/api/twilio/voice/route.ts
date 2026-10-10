@@ -1,10 +1,21 @@
 import { NextResponse } from 'next/server';
 
-// Configure your Twilio phone number's voice webhook to point here.
-// The gather prompt is intentionally concise so the caller can speak naturally.
-export async function POST() {
-  const base = process.env.NEXT_PUBLIC_APP_URL ?? '';
+// When an incoming call arrives on Twilio, this webhook answers automatically.
+export async function POST(request: Request) {
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? 'http://localhost:3000';
   const gatherUrl = `${base}/api/twilio/gather`;
-  const xml = `<Response><Gather input="speech" action="${gatherUrl}" method="POST" speechTimeout="auto"><Say voice="Polly.Amy">Hi, I’m your Call2Code assistant. I’ll ask a few questions and turn your answers into a website. What is your business called, and what do you do?</Say></Gather><Say>Sorry, I didn’t hear anything. Please call again soon.</Say></Response>`;
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<Response>
+  <Say voice="Polly.Amy">
+    Hello! I am Call2Code, your AI website builder.
+    Tell me about your business: What is your business called, what do you offer, and who is your target audience?
+  </Say>
+  <Gather input="speech" action="${gatherUrl}" method="POST" speechTimeout="auto" timeout="8">
+    <Say voice="Polly.Amy">Please speak after the tone.</Say>
+  </Gather>
+  <Say voice="Polly.Amy">I did not catch that. Please call back anytime to build your website.</Say>
+</Response>`;
+
   return new NextResponse(xml, { headers: { 'Content-Type': 'text/xml' } });
 }
