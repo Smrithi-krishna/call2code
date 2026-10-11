@@ -26,7 +26,7 @@ CRITICAL DESIGN & ENGINEERING RULES:
 1. COMPLETE STANDALONE CODE: Generate a complete single-file HTML document (<!DOCTYPE html>) with all CSS in a <style> block and all interactivity in a <script> block. No external framework dependencies.
 2. TAILORED BRANDING & COPYWRITING:
    - Extract the business name, core offer, and niche from the caller's words. If not explicitly named, invent a catchy, memorable, modern brand name that fits their industry.
-   - Write sharp, high-converting copy specifically tailored to their customer pain points and services.
+   - Write sharp, high-converting copy in modern, professional English tailored to their customer pain points, core services, and target audience.
 3. PREMIUM AESTHETICS:
    - Modern typography imported from Google Fonts (e.g. 'Plus Jakarta Sans', 'Outfit', or 'Space Grotesk').
    - Sophisticated color palette using CSS custom properties (--bg, --surface, --primary, --accent, --text, --muted).

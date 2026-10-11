@@ -3,3 +3,16 @@ node_modules/
 *.tsbuildinfo
 .env*
 !.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+scratch/
+
+# Android / Gradle
+.gradle/
+build/
+**/build/
+*.apk
+

@@ -12,4 +12,7 @@
 .transcript-item.assistant{background:#f0f4f2;border-left:3px solid #3d8c57}
 .transcript-role{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;display:block;margin-bottom:3px;color:#586761}
 .transcript-text{margin:0;color:#1e2925}
+.voice-status{margin:0 0 12px;max-width:680px;color:#3d5f49;line-height:1.5;font-size:14px}
+.voice-audio{display:block;width:min(100%,420px);height:40px;margin:0 0 16px}
+.primary:disabled{cursor:wait;opacity:.7}
 
